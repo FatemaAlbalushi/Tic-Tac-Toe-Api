@@ -52,7 +52,7 @@ public class TicTacToeBoard {
      * @param col the column of the cell to set the value of
      * @param value the value to set the cell to
      */
-    public void setCellValue(int row, int col, int value) {
+    public void setCellValue(int row, int col, int value) throws ArrayIndexOutOfBoundsException {
         board[row][col] = value;
     }
 

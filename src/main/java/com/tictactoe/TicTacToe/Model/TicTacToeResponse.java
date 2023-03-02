@@ -1,8 +1,16 @@
 package com.tictactoe.TicTacToe.Model;
 
+import org.springframework.http.HttpStatus;
+
 public class TicTacToeResponse {
     private int[][] board;
     private String[][] boardWithSymbols;
+    private String status;
+
+    private boolean isWinner;
+    private boolean isFull;
+
+
 
     /**
      * Constructor for TicTacToeResponse class.
@@ -25,15 +33,19 @@ public class TicTacToeResponse {
                 }
             }
         }
+
+
     }
+
+
 
     /**
      * Getter for the board variable.
      * @return int[][] array representing the Tic Tac Toe board
      */
-    public int[][] getBoard() {
-        return board;
-    }
+//    public int[][] getBoard() {
+//        return board;
+//    }
 
     /**
      * Setter for the board variable.
@@ -51,6 +63,23 @@ public class TicTacToeResponse {
     public String[][] getBoardWithSymbols() {
         return boardWithSymbols;
     }
+
+
+    public String getStatus() {
+        TicTacToeBoard board1 = new TicTacToeBoard();
+        if (board1.hasWon(1)) {
+            status=("Game over. Player X wins.");
+        } else if (board1.hasWon(2)) {
+            status=("Game over. Player X wins.");
+        }
+        else if (board1.isFull()) {
+            status=("Game over. Board is full. It's a tie.");
+        } else {
+            status=("Request succeeded with status code " + HttpStatus.OK.value());
+        }
+        return status;
+    }
+
 
     /**
      * Setter for the boardWithSymbols variable.
